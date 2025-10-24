@@ -1,12 +1,12 @@
 const baseConfig = {
   env: {
-    es2022: true,
+    es2022: true
   },
   extends: ['eslint:recommended'],
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module',
-  },
-};
+    sourceType: 'module'
+  }
+}
 
-export default baseConfig;
+export default baseConfig

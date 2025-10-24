@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@power/commitlint-config": "workspace:*",
+    "@power/prettier-config": "workspace:*",
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@typescript-eslint/eslint-plugin": "^8.46.2",
