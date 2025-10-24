@@ -1,0 +1,19 @@
+{
+  "name": "@power/backend",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node src/index.js",
+    "start": "node src/index.js",
+    "build": "echo 'backend: nothing to build'",
+    "lint": "echo 'backend: no lint configured'",
+    "test": "echo 'backend: no tests'"
+  },
+  "dependencies": {
+    "fastify": "^4.28.1"
+  }
+}
