@@ -12,7 +12,8 @@
     "build": "echo 'backend: nothing to build'",
     "lint": "eslint \"src/**/*.{js,ts}\" --max-warnings 0",
     "format": "prettier --write .",
-    "test": "echo 'backend: no tests'"
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "fastify": "^4.28.1"
@@ -24,6 +25,8 @@
     "@eslint/js": "^9.18.0",
     "eslint": "^9.17.0",
     "eslint-plugin-n": "^17.23.1",
-    "prettier": "^3.6.2"
+    "prettier": "^3.6.2",
+    "supertest": "^7.0.0",
+    "vitest": "^2.1.8"
   }
 }

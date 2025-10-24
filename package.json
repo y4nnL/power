@@ -8,7 +8,8 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "test": "turbo test",
-    "prepare": "husky install packages/husky-config"
+    "prepare": "husky install packages/husky-config",
+    "postinstall": "pnpm --filter @power/frontend exec playwright install"
   },
   "devDependencies": {
     "@power/commitlint-config": "workspace:*",
