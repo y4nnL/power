@@ -13,8 +13,12 @@
       "outputs": []
     },
     "test": {
-      "dependsOn": ["^test"],
+      "dependsOn": ["^test", "test:e2e"],
       "outputs": ["coverage/**"]
+    },
+    "test:e2e": {
+      "dependsOn": ["^test:e2e"],
+      "outputs": []
     }
   }
 }
