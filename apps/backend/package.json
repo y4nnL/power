@@ -10,10 +10,20 @@
     "dev": "node src/index.js",
     "start": "node src/index.js",
     "build": "echo 'backend: nothing to build'",
-    "lint": "echo 'backend: no lint configured'",
+    "lint": "eslint \"src/**/*.{js,ts}\" --max-warnings 0",
+    "format": "prettier --write .",
     "test": "echo 'backend: no tests'"
   },
   "dependencies": {
     "fastify": "^4.28.1"
+  },
+  "devDependencies": {
+    "@power/eslint-config": "workspace:*",
+    "@power/prettier-config": "workspace:*",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.18.0",
+    "eslint": "^9.17.0",
+    "eslint-plugin-n": "^17.23.1",
+    "prettier": "^3.6.2"
   }
 }

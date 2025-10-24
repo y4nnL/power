@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 export default function App(): React.JSX.Element {
   return (
@@ -6,5 +6,5 @@ export default function App(): React.JSX.Element {
       <h1>Bonjour Power</h1>
       <p>Une base React + Vite toute simple.</p>
     </main>
-  );
+  )
 }
