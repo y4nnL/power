@@ -1,0 +1,14 @@
+node_modules
+.pnpm-store
+.env
+.env.local
+.DS_Store
+
+# Turbo cache
+.turbo
+
+# Build outputs
+**/dist
+**/build
+**/.next
+**/coverage
