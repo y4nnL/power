@@ -1,4 +1,4 @@
-import baseConfig from './base.js';
+import baseConfig from './base.js'
 
 const reactConfig = {
   ...baseConfig,
@@ -8,23 +8,23 @@ const reactConfig = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
-    'prettier',
+    'prettier'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ...(baseConfig.parserOptions ?? {}),
     ecmaFeatures: {
       ...(baseConfig.parserOptions?.ecmaFeatures ?? {}),
-      jsx: true,
+      jsx: true
     },
-    sourceType: 'module',
+    sourceType: 'module'
   },
   settings: {
     ...(baseConfig.settings ?? {}),
     react: {
       ...(baseConfig.settings?.react ?? {}),
-      version: 'detect',
-    },
+      version: 'detect'
+    }
   },
   rules: {
     ...(baseConfig.rules ?? {}),
@@ -34,10 +34,10 @@ const reactConfig = {
       'warn',
       {
         argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-      },
-    ],
-  },
-};
+        varsIgnorePattern: '^_'
+      }
+    ]
+  }
+}
 
-export default reactConfig;
+export default reactConfig

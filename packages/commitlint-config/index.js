@@ -1,8 +1,8 @@
 const config = {
   extends: ['@commitlint/config-conventional'],
   rules: {
-    'subject-empty': [2, 'never'],
-  },
-};
+    'subject-empty': [2, 'never']
+  }
+}
 
-export default config;
+export default config

@@ -14,8 +14,6 @@ describe('App', () => {
       })
     ).toBeInTheDocument()
 
-    expect(
-      screen.getByText('Une base React + Vite toute simple.')
-    ).toBeInTheDocument()
+    expect(screen.getByText('Une base React + Vite toute simple.')).toBeInTheDocument()
   })
 })
