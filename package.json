@@ -7,9 +7,13 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "test": "turbo test"
+    "test": "turbo test",
+    "prepare": "husky install packages/husky-config"
   },
   "devDependencies": {
+    "@power/commitlint-config": "workspace:*",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
     "@typescript-eslint/eslint-plugin": "^8.46.2",
     "@typescript-eslint/parser": "^8.46.2",
     "eslint": "^9.17.0",
@@ -18,7 +22,18 @@
     "eslint-plugin-n": "^17.23.1",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.6",
     "prettier": "^3.6.2",
     "turbo": "^2.5.8"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "pnpm exec eslint --max-warnings=0",
+      "pnpm exec prettier --write"
+    ],
+    "*.{json,css,scss,md,mdx,yml,yaml}": [
+      "pnpm exec prettier --write"
+    ]
   }
 }
