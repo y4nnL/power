@@ -1,0 +1,10 @@
+const prettierConfig = {
+  semi: false,
+  singleQuote: true,
+  printWidth: 120,
+  tabWidth: 2,
+  trailingComma: 'none',
+  arrowParens: 'always'
+}
+
+export default prettierConfig

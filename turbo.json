@@ -9,7 +9,8 @@
       "cache": false
     },
     "lint": {
-      "dependsOn": ["^lint"]
+      "dependsOn": ["^lint"],
+      "outputs": []
     },
     "test": {
       "dependsOn": ["^test"],
