@@ -1,6 +1,0 @@
-#!/usr/bin/env sh
-set -eu
-
-export PATH="$(dirname "$0")/../node_modules/.bin:$PATH"
-
-pnpm exec commitlint --edit "$1"

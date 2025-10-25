@@ -1,8 +1,0 @@
-#!/usr/bin/env sh
-set -eu
-
-export PATH="$(dirname "$0")/../node_modules/.bin:$PATH"
-
-pnpm lint
-pnpm format:check
-pnpm lint-staged

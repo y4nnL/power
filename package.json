@@ -17,7 +17,7 @@
     "format:config:check": "pnpm exec prettier --check --ignore-path .prettierignore-config .",
     "test": "turbo test",
     "test:e2e": "turbo test:e2e",
-    "prepare": "husky install",
+    "prepare": "node ./scripts/install-git-hooks.mjs",
     "postinstall": "pnpm --filter @power/frontend exec playwright install"
   },
   "devDependencies": {
@@ -36,7 +36,6 @@
     "eslint-plugin-n": "^17.23.1",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "husky": "^9.1.7",
     "lint-staged": "^16.2.6",
     "prettier": "^3.6.2",
     "turbo": "^2.5.8"
