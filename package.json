@@ -1,0 +1,51 @@
+{
+  "name": "power",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "packageManager": "pnpm@10.13.1",
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "lint:fix": "turbo lint:fix",
+    "lint:config": "pnpm exec eslint --max-warnings=0 .",
+    "lint:config:fix": "pnpm exec eslint --max-warnings=0 --fix .",
+    "format": "turbo format && pnpm format:config",
+    "format:check": "turbo format:check && pnpm format:config:check",
+    "format:config": "pnpm exec prettier --write --ignore-path .prettierignore-config .",
+    "format:config:check": "pnpm exec prettier --check --ignore-path .prettierignore-config .",
+    "test": "turbo test",
+    "test:e2e": "turbo test:e2e",
+    "prepare": "node ./scripts/install-git-hooks.mjs",
+    "postinstall": "pnpm --filter @power/frontend exec playwright install"
+  },
+  "devDependencies": {
+    "@power/commitlint-config": "workspace:*",
+    "@power/eslint-config": "workspace:*",
+    "@power/prettier-config": "workspace:*",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.18.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-n": "^17.23.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "lint-staged": "^16.2.6",
+    "prettier": "^3.6.2",
+    "turbo": "^2.5.8"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "pnpm exec prettier --write"
+    ],
+    "*.{json,css,scss,md,mdx,yml,yaml}": [
+      "pnpm exec prettier --write"
+    ]
+  }
+}

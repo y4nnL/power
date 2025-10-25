@@ -1,0 +1,19 @@
+node_modules
+.pnpm-store
+.env
+.env.local
+.DS_Store
+node-compile-cache
+
+# Turbo cache
+.turbo
+
+# Build outputs
+**/dist
+**/build
+**/.next
+**/coverage
+
+# Playwright artifacts
+playwright-download-*
+packages/playwright-config/test-results
