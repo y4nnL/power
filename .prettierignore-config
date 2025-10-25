@@ -1,0 +1,22 @@
+# Configuration-only formatting scope for pnpm format:config
+*
+!apps/
+!apps/**/*.config.js
+!apps/**/*.config.cjs
+!apps/**/*.config.mjs
+!apps/**/*.config.ts
+!commitlint.config.mjs
+!.github/
+!.github/workflows/
+!.github/workflows/**/*.yml
+!packages/
+!packages/**/*.js
+!packages/**/*.ts
+!packages/**/*.json
+!pnpm-workspace.yaml
+!*.config.js
+!*.config.cjs
+!*.config.mjs
+!*.config.ts
+!.prettierrc.js
+!turbo.json
