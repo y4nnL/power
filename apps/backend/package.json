@@ -12,8 +12,8 @@
     "build": "echo 'backend: nothing to build'",
     "lint": "eslint \"src/**/*.{js,ts}\" --max-warnings 0",
     "lint:fix": "eslint \"src/**/*.{js,ts}\" --max-warnings 0 --fix",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
     "test": "pnpm exec vitest run",
     "test:watch": "pnpm exec vitest"
   },

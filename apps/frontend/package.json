@@ -9,8 +9,8 @@
     "preview": "vite preview",
     "lint": "eslint . --ext .ts,.tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --ext .ts,.tsx --report-unused-disable-directives --max-warnings 0 --fix",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
     "test": "pnpm exec vitest run",
     "test:watch": "pnpm exec vitest",
     "test:e2e": "pnpm exec playwright test --config ../../packages/playwright-config/playwright.config.ts"
