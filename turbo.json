@@ -12,12 +12,24 @@
       "dependsOn": ["^lint"],
       "outputs": []
     },
+    "lint:fix": {
+      "dependsOn": ["^lint:fix"],
+      "outputs": []
+    },
     "test": {
-      "dependsOn": ["^test", "test:e2e"],
-      "outputs": ["coverage/**"]
+      "dependsOn": ["^test", "^test:e2e", "test:e2e"],
+      "outputs": []
     },
     "test:e2e": {
       "dependsOn": ["^test:e2e"],
+      "outputs": []
+    },
+    "format": {
+      "dependsOn": ["^format"],
+      "outputs": []
+    },
+    "format:check": {
+      "dependsOn": ["^format:check"],
       "outputs": []
     }
   }
