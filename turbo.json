@@ -16,6 +16,14 @@
       "dependsOn": ["^lint:fix"],
       "outputs": []
     },
+    "lint:config": {
+      "dependsOn": ["^lint:config"],
+      "outputs": []
+    },
+    "lint:config:fix": {
+      "dependsOn": ["^lint:config:fix"],
+      "outputs": []
+    },
     "test": {
       "dependsOn": ["^test", "^test:e2e", "test:e2e"],
       "outputs": []
@@ -28,8 +36,16 @@
       "dependsOn": ["^format"],
       "outputs": []
     },
-    "format:check": {
-      "dependsOn": ["^format:check"],
+    "format:fix": {
+      "dependsOn": ["^format:fix"],
+      "outputs": []
+    },
+    "format:config": {
+      "dependsOn": ["^format:config"],
+      "outputs": []
+    },
+    "format:config:fix": {
+      "dependsOn": ["^format:config:fix"],
       "outputs": []
     }
   }

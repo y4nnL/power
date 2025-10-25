@@ -1,0 +1,16 @@
+{
+  "name": "@power/config-tasks",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "pnpm run lint:config",
+    "lint:fix": "pnpm run lint:config:fix",
+    "lint:config": "pnpm --dir ../../ exec eslint --max-warnings=0 .",
+    "lint:config:fix": "pnpm --dir ../../ exec eslint --max-warnings=0 --fix .",
+    "format": "pnpm run format:config",
+    "format:fix": "pnpm run format:config:fix",
+    "format:config": "pnpm --dir ../../ exec prettier --check --ignore-path .prettierignore-config .",
+    "format:config:fix": "pnpm --dir ../../ exec prettier --write --ignore-path .prettierignore-config ."
+  }
+}
