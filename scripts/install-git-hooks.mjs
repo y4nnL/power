@@ -2,7 +2,7 @@ import { chmodSync } from 'node:fs';
 import { join } from 'node:path';
 import { execSync } from 'node:child_process';
 
-const HOOK_DIR = 'packages/gif-config';
+const HOOK_DIR = 'packages/git-config';
 const HOOKS = ['pre-commit', 'commit-msg'];
 
 for (const hook of HOOKS) {
