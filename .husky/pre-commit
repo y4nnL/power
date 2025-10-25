@@ -1,11 +1,8 @@
 #!/usr/bin/env sh
 set -eu
 
-husky_sh="$(dirname "$0")/_/husky.sh"
-if [ -f "$husky_sh" ]; then
-  . "$husky_sh"
-else
-  export PATH="$(pwd)/node_modules/.bin:$PATH"
-fi
+export PATH="$(dirname "$0")/../node_modules/.bin:$PATH"
 
-exec "$(dirname "$0")/../packages/husky-config/pre-commit" "$@"
+pnpm lint
+pnpm format:check
+pnpm lint-staged

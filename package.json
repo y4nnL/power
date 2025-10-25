@@ -17,7 +17,7 @@
     "format:config:check": "pnpm exec prettier --check --ignore-path .prettierignore-config .",
     "test": "turbo test",
     "test:e2e": "turbo test:e2e",
-    "prepare": "node ./scripts/setup-husky.mjs",
+    "prepare": "husky install",
     "postinstall": "pnpm --filter @power/frontend exec playwright install"
   },
   "devDependencies": {

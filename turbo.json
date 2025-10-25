@@ -17,7 +17,7 @@
       "outputs": []
     },
     "test": {
-      "dependsOn": ["^test"],
+      "dependsOn": ["^test", "^test:e2e", "test:e2e"],
       "outputs": []
     },
     "test:e2e": {
