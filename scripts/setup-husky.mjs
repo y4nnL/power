@@ -7,6 +7,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const repoRoot = path.resolve(__dirname, '..')
 const hooksPath = path.join(repoRoot, 'packages', 'husky-config')
+const legacyHooksPath = path.join(repoRoot, '.husky')
 
 function ensureGitRepository() {
   try {
@@ -32,6 +33,11 @@ try {
     const hookPath = path.join(hooksPath, hook)
     if (existsSync(hookPath)) {
       chmodSync(hookPath, 0o755)
+    }
+
+    const legacyHookPath = path.join(legacyHooksPath, hook)
+    if (existsSync(legacyHookPath)) {
+      chmodSync(legacyHookPath, 0o755)
     }
   }
 } catch (error) {
