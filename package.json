@@ -8,10 +8,16 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
+    "lint:fix": "turbo lint:fix",
     "lint:config": "pnpm exec eslint --max-warnings=0 .",
-    "format:config": "pnpm exec prettier --check --ignore-path .prettierignore-config .",
+    "lint:config:fix": "pnpm exec eslint --max-warnings=0 --fix .",
+    "format": "turbo format && pnpm format:config",
+    "format:check": "turbo format:check && pnpm format:config:check",
+    "format:config": "pnpm exec prettier --write --ignore-path .prettierignore-config .",
+    "format:config:check": "pnpm exec prettier --check --ignore-path .prettierignore-config .",
     "test": "turbo test",
-    "prepare": "husky install packages/husky-config",
+    "test:e2e": "turbo test:e2e",
+    "prepare": "node ./scripts/setup-husky.mjs",
     "postinstall": "pnpm --filter @power/frontend exec playwright install"
   },
   "devDependencies": {
@@ -37,7 +43,6 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "pnpm exec eslint --max-warnings=0",
       "pnpm exec prettier --write"
     ],
     "*.{json,css,scss,md,mdx,yml,yaml}": [

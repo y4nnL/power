@@ -11,9 +11,11 @@
     "start": "node src/index.js",
     "build": "echo 'backend: nothing to build'",
     "lint": "eslint \"src/**/*.{js,ts}\" --max-warnings 0",
+    "lint:fix": "eslint \"src/**/*.{js,ts}\" --max-warnings 0 --fix",
     "format": "prettier --write .",
-    "test": "vitest run",
-    "test:watch": "vitest"
+    "format:check": "prettier --check .",
+    "test": "pnpm exec vitest run",
+    "test:watch": "pnpm exec vitest"
   },
   "dependencies": {
     "fastify": "^4.28.1"
