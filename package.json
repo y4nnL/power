@@ -18,7 +18,7 @@
     "test": "turbo test",
     "test:e2e": "turbo test:e2e",
     "prepare": "node ./scripts/install-git-hooks.mjs",
-    "postinstall": "pnpm --filter @power/frontend exec playwright install"
+    "postinstall": "pnpm --filter @power/frontend exec playwright install --with-deps"
   },
   "devDependencies": {
     "@power/commitlint-config": "workspace:*",

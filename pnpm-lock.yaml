@@ -87,6 +87,9 @@ importers:
       eslint-plugin-n:
         specifier: ^17.23.1
         version: 17.23.1(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3)
+      globals:
+        specifier: ^15.14.0
+        version: 15.15.0
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
@@ -174,6 +177,8 @@ importers:
         version: 2.1.9(@types/node@24.9.1)(jsdom@25.0.1)
 
   packages/commitlint-config: {}
+
+  packages/config-tasks: {}
 
   packages/eslint-config:
     dependencies:

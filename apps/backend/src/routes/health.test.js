@@ -1,6 +1,6 @@
 import supertest from 'supertest'
 
-import { buildServer } from '../src/index.js'
+import { buildServer } from '../index.js'
 
 describe('GET /health', () => {
   let server

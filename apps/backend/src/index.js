@@ -1,12 +1,14 @@
 import Fastify from 'fastify'
 import { pathToFileURL } from 'node:url'
 
+import { registerHealthRoute } from './routes/health.js'
+
 const buildServer = () => {
   const server = Fastify({
     logger: true
   })
 
-  server.get('/health', async () => ({ status: 'ok' }))
+  registerHealthRoute(server)
 
   return server
 }
