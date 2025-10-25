@@ -2,7 +2,7 @@
 set -euo pipefail
 
 HOOK_DIR="$(cd "$(dirname "$0")" && pwd)"
-REPO_ROOT="$(cd "$HOOK_DIR/.." && pwd)"
+REPO_ROOT="$(cd "$HOOK_DIR/../.." && pwd)"
 cd "$REPO_ROOT"
 
 export PATH="$REPO_ROOT/node_modules/.bin:$PATH"
