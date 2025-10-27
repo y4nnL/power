@@ -6,10 +6,11 @@ export interface CardProps {
   description?: string;
   actions?: ReactNode;
   className?: string;
+  contentClassName?: string;
   children: ReactNode;
 }
 
-export function Card({ title, description, actions, className, children }: CardProps) {
+export function Card({ title, description, actions, className, contentClassName, children }: CardProps) {
   return (
     <section className={twMerge("rounded-xl border border-slate-200 bg-white p-6 shadow-sm", className)}>
       {(title || actions) && (
@@ -21,7 +22,7 @@ export function Card({ title, description, actions, className, children }: CardP
           {actions && <div className="flex items-center gap-2">{actions}</div>}
         </header>
       )}
-      <div className="space-y-4 text-slate-700">{children}</div>
+      <div className={twMerge("space-y-4 text-slate-700", contentClassName)}>{children}</div>
     </section>
   );
 }

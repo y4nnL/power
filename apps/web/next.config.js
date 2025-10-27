@@ -3,52 +3,7 @@ const withPWA = require("next-pwa")({
   disable: process.env.NODE_ENV === "development",
   register: true,
   skipWaiting: true,
-  runtimeCaching: [
-    {
-      urlPattern: ({ request }) => request.destination === "document" && request.url.includes("/athlete"),
-      handler: "StaleWhileRevalidate"
-    },
-    {
-      urlPattern: ({ request }) => request.destination === "document" && request.url.includes("/coach"),
-      handler: "NetworkFirst",
-      options: {
-        networkTimeoutSeconds: 3
-      }
-    },
-    {
-      urlPattern: ({ request }) => request.destination === "image",
-      handler: "CacheFirst",
-      options: {
-        cacheName: "images",
-        expiration: {
-          maxEntries: 100,
-          maxAgeSeconds: 60 * 60 * 24 * 30
-        }
-      }
-    },
-    {
-      urlPattern: /\/api\/.*\/?$/,
-      handler: "NetworkFirst",
-      method: "GET",
-      options: {
-        cacheName: "api-cache",
-        networkTimeoutSeconds: 5,
-        backgroundSync: {
-          name: "api-queue",
-          options: {
-            maxRetentionTime: 24 * 60
-          }
-        }
-      }
-    }
-  ],
-  workbox: {
-    offlineGoogleAnalytics: true,
-    navigateFallback: "/offline.html",
-    cleanupOutdatedCaches: true,
-    clientsClaim: true,
-    skipWaiting: true
-  }
+  customWorkerDir: "workers"
 });
 
 const config = {
