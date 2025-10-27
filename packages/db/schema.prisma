@@ -1,0 +1,277 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  COACH
+  ATHLETE
+}
+
+enum MembershipRole {
+  OWNER
+  ADMIN
+  COACH
+  ATHLETE
+}
+
+enum MediaScope {
+  PROGRAM
+  WORKOUT
+  WORKOUT_LOG
+  PROFILE
+}
+
+enum SubscriptionStatus {
+  INCOMPLETE
+  ACTIVE
+  PAST_DUE
+  CANCELED
+  TRIALING
+}
+
+model User {
+  id              String           @id @default(cuid())
+  email           String           @unique
+  role            UserRole
+  clerkUserId     String           @unique
+  memberships     Membership[]
+  coachProfile    CoachProfile?
+  athleteProfile  AthleteProfile?
+  workoutLogs     WorkoutLog[]
+  media           Media[]
+  comments        Comment[]
+  chatMessages    ChatMessage[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+}
+
+model Org {
+  id              String        @id @default(cuid())
+  name            String
+  slug            String        @unique
+  ownerId         String
+  stripeCustomerId String?
+  owner           User          @relation(fields: [ownerId], references: [id])
+  memberships     Membership[]
+  programs        Program[]
+  coachProfiles   CoachProfile[]
+  invoices        Invoice[]
+  subscriptions   Subscription[]
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+model Membership {
+  id        String          @id @default(cuid())
+  userId    String
+  orgId     String
+  role      MembershipRole
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+  org  Org  @relation(fields: [orgId], references: [id])
+
+  @@unique([userId, orgId])
+}
+
+model CoachProfile {
+  id               String   @id @default(cuid())
+  userId           String   @unique
+  orgId            String
+  bio              String?
+  specialization   String?
+  stripeCustomerId String?
+  user             User     @relation(fields: [userId], references: [id])
+  org              Org      @relation(fields: [orgId], references: [id])
+  programs         Program[]
+}
+
+model AthleteProfile {
+  id             String   @id @default(cuid())
+  userId         String   @unique
+  coachId        String?
+  selfCoached    Boolean  @default(false)
+  dateOfBirth    DateTime?
+  metrics        Json?
+  user           User     @relation(fields: [userId], references: [id])
+  assignments    Assignment[]
+  workoutLogs    WorkoutLog[]
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Program {
+  id          String     @id @default(cuid())
+  name        String
+  description String?
+  ownerId     String
+  orgId       String
+  phases      Phase[]
+  assignments Assignment[]
+  media       Media[]
+  owner       CoachProfile @relation(fields: [ownerId], references: [id])
+  org         Org          @relation(fields: [orgId], references: [id])
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Phase {
+  id          String    @id @default(cuid())
+  name        String
+  order       Int
+  programId   String
+  description String?
+  program     Program  @relation(fields: [programId], references: [id])
+  workouts    Workout[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Workout {
+  id          String   @id @default(cuid())
+  name        String
+  sequence    Int
+  phaseId     String
+  notes       String?
+  phase       Phase    @relation(fields: [phaseId], references: [id])
+  sets        Set[]
+  media       Media[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Exercise {
+  id          String   @id @default(cuid())
+  name        String
+  category    String?
+  equipment   String?
+  description String?
+  media       Media[]
+  sets        Set[]
+  orgId       String?
+  org         Org?     @relation(fields: [orgId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Set {
+  id           String   @id @default(cuid())
+  workoutId    String
+  exerciseId   String
+  order        Int
+  targetReps   Int?
+  targetLoad   Float?
+  targetTempo  String?
+  targetRpe    Float?
+  notes        String?
+  workout      Workout   @relation(fields: [workoutId], references: [id])
+  exercise     Exercise  @relation(fields: [exerciseId], references: [id])
+  workoutLogs  WorkoutLog[]
+}
+
+model Assignment {
+  id            String    @id @default(cuid())
+  programId     String
+  athleteId     String
+  startDate     DateTime
+  endDate       DateTime?
+  status        String    @default("ACTIVE")
+  program       Program   @relation(fields: [programId], references: [id])
+  athlete       AthleteProfile @relation(fields: [athleteId], references: [id])
+  workoutLogs   WorkoutLog[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model WorkoutLog {
+  id            String   @id @default(cuid())
+  setId         String
+  athleteId     String
+  assignmentId  String
+  performedReps Int?
+  performedLoad Float?
+  perceivedRpe  Float?
+  notes         String?
+  startedAt     DateTime?
+  completedAt   DateTime?
+  offline       Boolean  @default(false)
+  set           Set      @relation(fields: [setId], references: [id])
+  athlete       AthleteProfile @relation(fields: [athleteId], references: [id])
+  assignment    Assignment @relation(fields: [assignmentId], references: [id])
+  media         Media[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Media {
+  id          String    @id @default(cuid())
+  url         String
+  thumbnail   String?
+  muxAssetId  String?
+  muxPlaybackId String?
+  scope       MediaScope
+  ownerId     String
+  orgId       String?
+  workoutLogId String?
+  exerciseId  String?
+  programId   String?
+  workoutId   String?
+  uploadedBy  User      @relation(fields: [ownerId], references: [id])
+  org         Org?      @relation(fields: [orgId], references: [id])
+  workoutLog  WorkoutLog? @relation(fields: [workoutLogId], references: [id])
+  exercise    Exercise? @relation(fields: [exerciseId], references: [id])
+  program     Program?  @relation(fields: [programId], references: [id])
+  workout     Workout?  @relation(fields: [workoutId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Invoice {
+  id              String   @id @default(cuid())
+  orgId           String
+  stripeInvoiceId String   @unique
+  amountDue       Int
+  amountPaid      Int
+  status          String
+  periodStart     DateTime
+  periodEnd       DateTime
+  org             Org      @relation(fields: [orgId], references: [id])
+  createdAt       DateTime @default(now())
+}
+
+model Subscription {
+  id                 String             @id @default(cuid())
+  orgId              String
+  stripeCustomerId   String
+  stripeSubscriptionId String @unique
+  status             SubscriptionStatus
+  currentPeriodEnd   DateTime?
+  org                Org                @relation(fields: [orgId], references: [id])
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+}
+
+model Comment {
+  id          String   @id @default(cuid())
+  assignmentId String
+  userId      String
+  message     String
+  assignment  Assignment @relation(fields: [assignmentId], references: [id])
+  user        User       @relation(fields: [userId], references: [id])
+  createdAt   DateTime   @default(now())
+}
+
+model ChatMessage {
+  id            String   @id @default(cuid())
+  channel       String
+  userId        String
+  payload       Json
+  user          User     @relation(fields: [userId], references: [id])
+  createdAt     DateTime @default(now())
+}
