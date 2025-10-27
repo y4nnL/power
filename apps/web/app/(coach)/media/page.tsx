@@ -16,7 +16,7 @@ export default async function MediaLibraryPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-semibold text-slate-900">Bibliothèque média</h1>
-          <p className="text-slate-500">Centralisez vos vidéos d'exécution et contenus pédagogiques.</p>
+          <p className="text-slate-500">Centralisez vos vidéos d’exécution et contenus pédagogiques.</p>
         </div>
         <Button asChild>
           <Link href="/coach/media/upload">Uploader une vidéo</Link>

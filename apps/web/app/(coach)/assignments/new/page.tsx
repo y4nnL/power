@@ -10,7 +10,7 @@ export default function NewAssignmentPage() {
           <Input label="Date de début" type="date" name="startDate" />
           <Input label="Date de fin" type="date" name="endDate" />
           <div className="md:col-span-2">
-            <Button type="submit">Créer l'assignation</Button>
+            <Button type="submit">Créer l’assignation</Button>
           </div>
         </form>
       </Card>

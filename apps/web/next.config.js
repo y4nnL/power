@@ -1,4 +1,6 @@
-const withPWA = require("next-pwa")({
+import withPWAInit from "next-pwa";
+
+const withPWA = withPWAInit({
   dest: "public",
   disable: process.env.NODE_ENV === "development",
   register: true,
@@ -6,7 +8,7 @@ const withPWA = require("next-pwa")({
   customWorkerDir: "workers"
 });
 
-const config = {
+const nextConfig = {
   transpilePackages: ["@power/ui", "@power/utils", "@power/db"],
   experimental: {
     serverActions: {
@@ -28,4 +30,4 @@ const config = {
   }
 };
 
-module.exports = withPWA(config);
+export default withPWA(nextConfig);

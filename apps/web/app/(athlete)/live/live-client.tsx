@@ -74,7 +74,7 @@ export default function LiveWorkoutClient({ assignmentId, programName }: Props) 
               <p className="text-xs text-slate-500">{new Date(event.timestamp).toLocaleTimeString()}</p>
             </li>
           ))}
-          {events.length === 0 && <li className="text-slate-400">En attente d'activité…</li>}
+          {events.length === 0 && <li className="text-slate-400">En attente d’activité…</li>}
         </ul>
       </div>
     </Card>

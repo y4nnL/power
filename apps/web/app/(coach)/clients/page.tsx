@@ -21,7 +21,7 @@ export default async function ClientsPage() {
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-semibold text-slate-900">Athlètes</h1>
-          <p className="text-slate-500">Suivez l'engagement et assignez des programmes personnalisés.</p>
+          <p className="text-slate-500">Suivez l’engagement et assignez des programmes personnalisés.</p>
         </div>
         <Button asChild>
           <Link href="/coach/assignments/new">Assigner un programme</Link>
