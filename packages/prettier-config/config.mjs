@@ -1,5 +1,3 @@
-import type { Config } from 'prettier'
-
 export const config = {
   singleQuote: true,
   semi: false,
@@ -7,6 +5,4 @@ export const config = {
   printWidth: 100,
   tabWidth: 2,
   arrowParens: 'always'
-} satisfies Config
-
-export default config
+}

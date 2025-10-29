@@ -1,6 +1,3 @@
-export default {
-  '*.{js,jsx,ts,tsx,json,md,css,scss,html}': {
-    title: 'pnpm lint',
-    task: () => 'pnpm lint'
-  }
-}
+import { config } from '@power/lint-staged-config'
+
+export default config

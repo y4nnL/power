@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@power/commitlint-config": "workspace:*",
+    "@power/lint-staged-config": "workspace:*",
     "@changesets/cli": "^2.29.7",
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",

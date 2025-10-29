@@ -3,6 +3,4 @@ export const config = {
   rules: {
     'subject-empty': [2, 'never']
   }
-} as const
-
-export default config
+}

@@ -9,7 +9,7 @@ const stylisticRules = tseslint.configs.stylistic?.rules ?? {}
 
 export const ignoreConfig = {
   ignores: ['dist']
-} as const
+}
 
 export const typescriptConfig = {
   files: ['**/*.{ts,tsx}'],
@@ -21,8 +21,8 @@ export const typescriptConfig = {
     }
   },
   plugins: {
-    '@typescript-eslint': tseslint as unknown,
-    import: importPlugin as unknown
+    '@typescript-eslint': tseslint,
+    import: importPlugin
   },
   rules: {
     ...strictRules,
@@ -36,13 +36,11 @@ export const typescriptConfig = {
       }
     ]
   }
-} as const
+}
 
 export const config = [
   ignoreConfig,
   js.configs.recommended,
   typescriptConfig,
   prettierConfig
-] as const
-
-export default config
+]
