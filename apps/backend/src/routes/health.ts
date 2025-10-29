@@ -1,27 +1,27 @@
-import type { FastifyPluginCallback } from 'fastify'
+import type { FastifyPluginAsync } from 'fastify'
 
 type HealthResponse = {
   status: 'ok'
 }
 
-export const healthRoutes: FastifyPluginCallback = (app, _options, done) => {
+const healthResponseSchema = {
+  type: 'object',
+  properties: {
+    status: { type: 'string', enum: ['ok'] }
+  },
+  required: ['status'],
+  additionalProperties: false
+} as const
+
+export const healthRoutes: FastifyPluginAsync = async (app) => {
   app.route<{ Reply: HealthResponse }>({
     method: 'GET',
     url: '/health',
     schema: {
       response: {
-        200: {
-          type: 'object',
-          properties: {
-            status: { type: 'string' }
-          },
-          required: ['status'],
-          additionalProperties: false
-        }
+        200: healthResponseSchema
       }
     },
     handler: async () => ({ status: 'ok' })
   })
-
-  done()
 }

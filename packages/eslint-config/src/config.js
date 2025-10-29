@@ -35,10 +35,9 @@ export const ignoreConfig = {
 }
 
 /** @type {FlatConfig[]} */
-const config = [
-  recommendedConfig,
-  typescriptConfig,
-  ignoreConfig
-]
+export const baseConfigs = [recommendedConfig, typescriptConfig]
+
+/** @type {FlatConfig[]} */
+const config = [...baseConfigs, ignoreConfig]
 
 export default config

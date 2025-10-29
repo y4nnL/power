@@ -75,9 +75,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^8.0.0
         version: 8.46.2(eslint@9.38.0)(typescript@5.9.3)
-      globals:
-        specifier: ^15.8.0
-        version: 15.15.0
 
   packages/prettier-config: {}
 
