@@ -4,6 +4,4 @@ export const config = {
   sourcemap: true,
   clean: true,
   target: 'node20'
-} as const
-
-export default config
+}

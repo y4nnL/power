@@ -1,8 +1,8 @@
-import { config as baseConfig } from '@power/tsup-config'
+import { config } from '@power/tsup-config'
 import { defineConfig } from 'tsup'
 
 export default defineConfig({
-  ...baseConfig,
+  ...config,
   entry: ['src/index.ts', 'src/server/index.ts'],
   outDir: 'dist'
 })
