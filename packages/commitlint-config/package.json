@@ -1,0 +1,14 @@
+{
+  "name": "@power/commitlint-config",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "files": ["dist"],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "types": "./dist/index.d.ts",
+  "peerDependencies": {
+    "@commitlint/config-conventional": "^20.0.0"
+  }
+}

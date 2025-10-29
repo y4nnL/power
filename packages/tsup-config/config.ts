@@ -1,0 +1,9 @@
+export const config = {
+  format: ['esm'],
+  dts: true,
+  sourcemap: true,
+  clean: true,
+  target: 'node20'
+} as const
+
+export default config
