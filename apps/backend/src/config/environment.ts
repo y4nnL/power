@@ -1,13 +1,18 @@
 import { config as loadEnv } from 'dotenv'
+import type { ProcessEnv } from 'node:process'
 
 const DEFAULT_HOST = '0.0.0.0'
 const DEFAULT_PORT = 3000
 
 loadEnv()
 
-type ResolveServerAddressOptions = {
+type ResolveServerAddressOverrides = {
   host?: string
   port?: number
+}
+
+type ResolveServerAddressOptions = ResolveServerAddressOverrides & {
+  env?: ProcessEnv
 }
 
 type ServerAddress = {
@@ -26,11 +31,13 @@ const parsePort = (value: string | undefined): number | undefined => {
 }
 
 export const resolveServerAddress = (options: ResolveServerAddressOptions = {}): ServerAddress => {
-  const envPort = parsePort(process.env.PORT)
-  const envHost = process.env.HOST
+  const { env, ...overrides } = options
+  const sourceEnv = env ?? process.env
+  const envPort = parsePort(sourceEnv.PORT)
+  const envHost = sourceEnv.HOST
 
   return {
-    port: options.port ?? envPort ?? DEFAULT_PORT,
-    host: options.host ?? envHost ?? DEFAULT_HOST
+    port: overrides.port ?? envPort ?? DEFAULT_PORT,
+    host: overrides.host ?? envHost ?? DEFAULT_HOST
   }
 }

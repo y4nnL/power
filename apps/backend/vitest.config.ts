@@ -6,10 +6,7 @@ export default mergeConfig(
   defineConfig({
     test: {
       include: ['test/**/*.test.ts'],
-      globals: false,
-      coverage: {
-        include: ['src/routes/**/*.ts']
-      }
+      globals: false
     }
   })
 )
