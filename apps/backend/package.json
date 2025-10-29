@@ -1,0 +1,36 @@
+{
+  "name": "@power/backend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node --loader ts-node/esm src/index.ts",
+    "build": "tsc --project tsconfig.build.json",
+    "lint": "eslint .",
+    "test": "vitest run --coverage",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "fastify": "^4.28.1"
+  },
+  "devDependencies": {
+    "@power/eslint-config": "workspace:*",
+    "@power/prettier-config": "workspace:*",
+    "@power/typescript-config": "workspace:*",
+    "@power/vitest-config": "workspace:*",
+    "@types/node": "^20.14.10",
+    "@types/supertest": "^6.0.3",
+    "@vitest/coverage-v8": "^1.6.0",
+    "eslint": "^9.6.0",
+    "globals": "^15.8.0",
+    "prettier": "^3.3.3",
+    "supertest": "^6.3.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4",
+    "vitest": "^1.6.0"
+  }
+}

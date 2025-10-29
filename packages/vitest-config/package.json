@@ -1,0 +1,10 @@
+{
+  "name": "@power/vitest-config",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "peerDependencies": {
+    "vitest": "^1.6.0"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "@power/prettier-config",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "default": "./index.js"
+    }
+  }
+}
