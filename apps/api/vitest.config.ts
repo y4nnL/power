@@ -12,10 +12,5 @@ export default defineConfig({
       '@': resolve(__dirname, 'src'),
       '@test': resolve(__dirname, 'test')
     }
-  },
-  test: {
-    env: {
-      NODE_ENV: 'test'
-    }
   }
 })
