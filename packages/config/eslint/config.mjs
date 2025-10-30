@@ -12,18 +12,22 @@ export const ignoreConfig = {
   ignores: ['dist']
 }
 
+const sortObjectsRules = {
+  'perfectionist/sort-objects': [
+    'error',
+    {
+      order: 'asc',
+      type: 'natural'
+    }
+  ]
+}
+
 const sharedStyleConfig = {
   plugins: {
     perfectionist
   },
   rules: {
-    'perfectionist/sort-objects': [
-      'error',
-      {
-        order: 'asc',
-        type: 'natural'
-      }
-    ]
+    ...sortObjectsRules
   }
 }
 
@@ -44,19 +48,13 @@ export const typescriptConfig = {
   rules: {
     ...strictRules,
     ...stylisticRules,
+    ...sortObjectsRules,
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'import/order': [
       'error',
       {
         alphabetize: { caseInsensitive: true, order: 'asc' },
         'newlines-between': 'always'
-      }
-    ],
-    'perfectionist/sort-objects': [
-      'error',
-      {
-        order: 'asc',
-        type: 'natural'
       }
     ]
   }
