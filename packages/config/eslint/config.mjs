@@ -50,11 +50,49 @@ export const typescriptConfig = {
     ...stylisticRules,
     ...sortObjectsRules,
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-    'import/order': [
+    'import/first': 'error',
+    'import/no-relative-parent-imports': 'error',
+    'no-return-await': 'error',
+    'perfectionist/sort-imports': [
       'error',
       {
-        alphabetize: { caseInsensitive: true, order: 'asc' },
-        'newlines-between': 'always'
+        groups: [
+          'type-import',
+          ['value-builtin', 'value-external'],
+          'type-internal',
+          'value-internal',
+          ['type-parent', 'type-sibling', 'type-index'],
+          ['value-parent', 'value-sibling', 'value-index'],
+          'ts-equals-import',
+          'unknown'
+        ],
+        ignoreCase: true,
+        newlinesBetween: 'never',
+        order: 'asc',
+        type: 'alphabetical'
+      }
+    ],
+    'perfectionist/sort-modules': [
+      'error',
+      {
+        groups: [
+          'declare-enum',
+          'export-enum',
+          'enum',
+          ['declare-interface', 'declare-type'],
+          ['export-interface', 'export-type'],
+          ['interface', 'type'],
+          'declare-class',
+          'class',
+          'export-class',
+          'declare-function',
+          'export-function',
+          'function'
+        ],
+        ignoreCase: true,
+        newlinesBetween: 'ignore',
+        order: 'asc',
+        type: 'alphabetical'
       }
     ]
   }
