@@ -2,30 +2,29 @@
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
     "dev": {
-      "cache": false,
-      "dependsOn": ["^dev"]
+      "cache": false
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", "build/**", ".next/**", "out/**"]
+      "inputs": ["$TURBO_DEFAULT$", "pnpm-lock.yaml", "tsconfig.json", "tsconfig.*.json"],
+      "outputs": ["dist/**"]
     },
     "lint": {
       "outputs": []
     },
     "format": {
-      "dependsOn": ["^format"],
       "outputs": []
     },
     "test": {
-      "dependsOn": ["^test"],
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", "pnpm-lock.yaml", "tsconfig.json", "tsconfig.*.json"],
       "outputs": ["coverage/**"]
     },
     "version": {
-      "dependsOn": ["^version"],
       "outputs": []
     },
     "publish": {
-      "dependsOn": ["^publish"],
+      "dependsOn": ["^build"],
       "outputs": []
     }
   }
