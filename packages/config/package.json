@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "main": "./index.js",
   "types": "./tsup/index.d.ts",
   "scripts": {
     "lint": "eslint . --fix",
