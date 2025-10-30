@@ -6,18 +6,40 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", "pnpm-lock.yaml", "tsconfig.json", "tsconfig.*.json"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "pnpm-lock.yaml",
+        "tsconfig.json",
+        "tsconfig.*.json",
+        "!dist/**"
+      ],
       "outputs": ["dist/**"]
     },
+    "typecheck": {
+      "outputs": [],
+      "dependsOn": ["^build"]
+    },
     "lint": {
-      "outputs": []
+      "outputs": [],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "pnpm-lock.yaml",
+        "eslint.config.*",
+        ".eslintrc.*"
+      ]
     },
     "format": {
       "outputs": []
     },
     "test": {
       "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", "pnpm-lock.yaml", "tsconfig.json", "tsconfig.*.json"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "pnpm-lock.yaml",
+        "tsconfig.json",
+        "tsconfig.*.json",
+        "!coverage/**"
+      ],
       "outputs": ["coverage/**"]
     },
     "version": {
