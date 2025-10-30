@@ -1,3 +1,3 @@
-import { config } from '@power/lint-staged-config'
+import { lintStagedConfig } from '@power/config'
 
-export default config
+export default lintStagedConfig
