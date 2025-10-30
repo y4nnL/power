@@ -16,8 +16,14 @@
       "outputs": ["dist/**"]
     },
     "typecheck": {
-      "outputs": [],
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "pnpm-lock.yaml",
+        "tsconfig.json",
+        "tsconfig.*.json"
+      ],
+      "outputs": []
     },
     "lint": {
       "outputs": [],
