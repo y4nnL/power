@@ -1,3 +1,3 @@
-import { eslintConfig } from '@power/config'
+import { config } from '@power/config/eslint'
 
-export default eslintConfig
+export default config

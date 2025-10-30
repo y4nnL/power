@@ -1,3 +1,3 @@
-import { prettierConfig } from '@power/config'
+import { config } from '@power/config/prettier'
 
-export default prettierConfig
+export default config

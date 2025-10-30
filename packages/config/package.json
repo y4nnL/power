@@ -4,10 +4,22 @@
   "private": true,
   "type": "module",
   "main": "./index.js",
-  "types": "./index.d.ts",
+  "types": "./tsup/index.d.ts",
   "scripts": {
     "lint": "eslint . --fix",
     "format": "prettier . --write"
+  },
+  "files": [
+    "./tsup/index.d.ts"
+  ],
+  "exports": {
+    "./changeset.config.json": "./changeset/config.json",
+    "./commitlint": "./commitlint/index.js",
+    "./eslint": "./eslint/index.js",
+    "./lint-staged": "./lint-staged/index.js",
+    "./prettier": "./prettier/index.js",
+    "./tsconfig.base.json": "./ts/base.json",
+    "./tsup": "./tsup/index.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.38.0",
