@@ -2,6 +2,7 @@ import js from '@eslint/js'
 import tseslint from '@typescript-eslint/eslint-plugin'
 import tsparser from '@typescript-eslint/parser'
 import importPlugin from 'eslint-plugin-import'
+import perfectionist from 'eslint-plugin-perfectionist'
 import prettierConfig from 'eslint-config-prettier'
 
 const strictRules = tseslint.configs.strict?.rules ?? {}
@@ -9,6 +10,21 @@ const stylisticRules = tseslint.configs.stylistic?.rules ?? {}
 
 export const ignoreConfig = {
   ignores: ['dist']
+}
+
+const sharedStyleConfig = {
+  plugins: {
+    perfectionist
+  },
+  rules: {
+    'perfectionist/sort-objects': [
+      'error',
+      {
+        order: 'asc',
+        type: 'natural'
+      }
+    ]
+  }
 }
 
 export const typescriptConfig = {
@@ -22,7 +38,8 @@ export const typescriptConfig = {
   },
   plugins: {
     '@typescript-eslint': tseslint,
-    import: importPlugin
+    import: importPlugin,
+    perfectionist
   },
   rules: {
     ...strictRules,
@@ -31,11 +48,24 @@ export const typescriptConfig = {
     'import/order': [
       'error',
       {
-        'newlines-between': 'always',
-        alphabetize: { order: 'asc', caseInsensitive: true }
+        alphabetize: { caseInsensitive: true, order: 'asc' },
+        'newlines-between': 'always'
+      }
+    ],
+    'perfectionist/sort-objects': [
+      'error',
+      {
+        order: 'asc',
+        type: 'natural'
       }
     ]
   }
 }
 
-export const config = [ignoreConfig, js.configs.recommended, typescriptConfig, prettierConfig]
+export const config = [
+  ignoreConfig,
+  sharedStyleConfig,
+  js.configs.recommended,
+  typescriptConfig,
+  prettierConfig
+]
